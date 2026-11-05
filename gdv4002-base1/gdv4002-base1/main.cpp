@@ -2,7 +2,7 @@
 
 
 // Function prototypes
-
+void myUpdate(GLFWwindow* window, double tDelta);
 
 // Global Variables
 
@@ -22,8 +22,35 @@ int main(void) {
 	//
 	// Setup game scene objects here
 	//
-	addObject("player", glm::vec2(0.0f,0.0f),glm::radians(0.0f),glm::vec2(1.0f,1.0f),"Resources\\Textures\\bumblebee.png");
-	
+	addObject(
+		"player1"
+		);
+
+	addObject(
+		"player2"
+	    );
+
+	GameObject2D* player1Object = getObject("player1");
+	if (player1Object != nullptr) 
+	{
+		// update player1 here
+		player1Object->position = glm::vec2(-1.0f, 1.0f);
+		player1Object->orientation = glm::radians(-30.0f);
+		player1Object->size = glm::vec2(1.5f, 1.5f);
+		player1Object->textureID = loadTexture("Resources\\Textures\\bumblebee.png");
+	}
+
+	GameObject2D* player2Object = getObject("player2");
+
+	if (player2Object != nullptr) 
+	{
+		// update player2 here
+		player2Object->position = glm::vec2(1.0f, 1.0f);
+		player2Object->orientation = glm::radians(45.0f);
+		player2Object->size = glm::vec2(1.0f, 1.0f);
+		player2Object->textureID = loadTexture("Resources\\Textures\\alien01.png");
+	}
+
 	//
 	// Set callback functions
 	//
@@ -38,3 +65,10 @@ int main(void) {
 	// return success :)
 	return 0;
 }
+
+void myUpdate(GLFWwindow* window, double tDelta) 
+{
+
+}
+
+
